@@ -118,4 +118,3 @@ desmos_url = "https://www.desmos.com/calculator/iv2e35gckm"
 # Embed the iframe using Streamlit's HTML component
 components.html(f'<iframe src="{desmos_url}" width="700" height="500"></iframe>', width=700, height=500)
 
-<iframe src="https://www.desmos.com/calculator/iv2e35gckm?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
