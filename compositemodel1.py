@@ -109,4 +109,12 @@ st.markdown(r'For $\delta_1 = 0.45$, $\delta_2 = 0.15$.')
 st.markdown(r'Where $k_\beta = 0.5$, $k_\psi = 10.1$, and $\vartheta_\text{op} = 45 °$.')
 
 
+st.title("Desmos Graph Embed in Streamlit")
+
+# Desmos graph iframe URL (replace with your own)
+desmos_url = "https://www.desmos.com/calculator/1qwmfqhaqu"
+
+# Embed the iframe using Streamlit's iframe component
+st.components.v1.iframe(src=desmos_url, width=700, height=500)
+
 
