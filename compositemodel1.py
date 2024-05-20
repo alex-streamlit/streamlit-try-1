@@ -108,3 +108,87 @@ st.latex(r""" L(\delta) = -\frac{2 \pi}{k_\beta d_\text{t} C_{D,\text{t}}} \sqrt
 st.markdown(r'For $\delta_1 = 0.45$, $\delta_2 = 0.15$.')
 st.markdown(r'Where $k_\beta = 0.5$, $k_\psi = 10.1$, and $\vartheta_\text{op} = 45 °$.')
 
+
+
+###NEW
+
+
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Set up the sidebar for parameter inputs
+st.sidebar.header('System Parameters')
+
+# Define the parameters
+beta = st.sidebar.slider(r'$\beta$', 1, 50, 10)
+Tt = st.sidebar.slider(r'$T_t$', 0.5, 2.0, 1.0)
+c = st.sidebar.slider(r'$c$', 5, 25, 10)
+A = st.sidebar.slider(r'$A$', 0.5, 3.0, 1.0)
+
+# Define the functions for f(s, t), f'(s, t), and δ(s)
+def f(s, t, beta, Tt, c, A):
+    return A * np.exp(-beta * s / (2 * c)) * np.sin((2 * np.pi / Tt) * (t - s / c))
+
+def f_prime(s, t, beta, Tt, c, A):
+    return -A * np.exp(-beta * s / (2 * c)) * (1 / c) * np.sqrt((beta / 2)**2 + (2 * np.pi / Tt)**2) * np.sin((2 * np.pi / Tt) * (t - s / c) + np.arctan(4 * np.pi / (beta * Tt)))
+
+def delta(s, beta, Tt, c):
+    return np.exp(-beta * s / (2 * c)) * np.sin(np.arctan(4 * np.pi / (beta * Tt)))
+
+# Create the figure and axis
+fig, ax = plt.subplots()
+
+# Set up the range for s
+s_values = np.linspace(0, 10, 500)
+
+# Initialize the lines for f(s, t), f'(s, t), and δ(s)
+line_f, = ax.plot([], [], 'r-', label=r'$f(s, t)$')
+line_f_prime, = ax.plot([], [], 'b-', label=r"$f'(s, t)$")
+line_delta, = ax.plot([], [], 'k--', label=r'$\delta(s)$')
+
+# Set up the plot limits and labels
+ax.set_xlim(0, 10)
+ax.set_ylim(-1.2*A, 1.2*A)
+ax.set_xlabel(r'Position along tether abscissa $s$')
+ax.set_ylabel(r'Function output: $f(s,t)$, $f\'(s, t)$, $\delta(s)$')
+ax.axhline(0, color='black', linewidth=0.5)
+ax.legend()
+
+# Initialize the plot
+def init():
+    line_f.set_data([], [])
+    line_f_prime.set_data([], [])
+    line_delta.set_data([], [])
+    return line_f, line_f_prime, line_delta
+
+# Animation function
+def animate(t):
+    y_f = f(s_values, t, beta, Tt, c, A)
+    y_f_prime = f_prime(s_values, t, beta, Tt, c, A)
+    y_delta = delta(s_values, beta, Tt, c)
+    
+    line_f.set_data(s_values, y_f)
+    line_f_prime.set_data(s_values, y_f_prime)
+    line_delta.set_data(s_values, y_delta)
+    
+    return line_f, line_f_prime, line_delta
+
+# Create the animation
+frames = np.linspace(0, Tt, 200)
+interval = Tt * 1000 / len(frames)  # Correct interval calculation
+ani = animation.FuncAnimation(fig, animate, init_func=init, frames=frames, interval=interval, blit=True)
+
+# Save the animation as a GIF in the current directory
+ani.save('animation.gif', writer='pillow')
+
+# Display the animation in Streamlit
+st.image('animation.gif')
+
+# Show the static equations as LaTeX
+st.markdown(r'Functions $f(s)$, $f\'(s)$, $\delta(s)$:')
+st.latex(r'f(s) = A e^{-\frac{\beta s}{2c}} \sin\left( \frac{2\pi}{T_t} \left( t - \frac{s}{c} \right) \right)')
+st.latex(r'f\'(s) = -A e^{-\frac{\beta s}{2c}} \cdot \frac{1}{c} \sqrt{\left( \frac{\beta}{2} \right)^2 + \left( \frac{2\pi}{T_t} \right)^2} \sin\left( \frac{2\pi}{T_t} \left( t - \frac{s}{c} \right) + \arctan\left( \frac{4\pi}{\beta T_t} \right) \right)')
+st.latex(r'\delta(s) = e^{-\frac{\beta s}{2c}} \sin\left( \arctan\left( \frac{4\pi}{\beta T_t} \right) \right)')
+
