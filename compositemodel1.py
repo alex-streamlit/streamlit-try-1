@@ -112,20 +112,32 @@ st.markdown(r'Where $k_\beta = 0.5$, $k_\psi = 10.1$, and $\vartheta_\text{op} =
 
 ###NEW
 
-
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
+st.header('Wave Equation')
+
+st.subheader('Interactive animation of wave equation')
+
+st.markdown(r'Interactive animation of solved wave equation for linear daming on a semi-infinite string for the case of light damping. Adjust system parameters on the left sidebar. May be slow: [More responsive interactive animation](https://www.desmos.com/calculator/1qwmfqhaqu?)')
+
+# Sidebar for parameter inputs
+st.sidebar.header('System Parameters')
+
+st.markdown("[More responsive interactive animation](https://www.desmos.com/calculator/1qwmfqhaqu?)")
+
+
+
 # Set up the sidebar for parameter inputs
 st.sidebar.header('System Parameters')
 
 # Define the parameters
-beta = st.sidebar.slider(r'$\beta$', 1, 50, 10)
-Tt = st.sidebar.slider(r'$T_t$', 0.5, 2.0, 1.0)
-c = st.sidebar.slider(r'$c$', 5, 25, 10)
-A = st.sidebar.slider(r'$A$', 0.5, 3.0, 1.0)
+beta = st.sidebar.slider(r'Linear damping coefficient $\beta$', 1, 50, 10)
+Tt = st.sidebar.slider(r'Time interval $T_t$', 0.5, 2.0, 1.0)
+c = st.sidebar.slider(r'Wave propagation velocity $c$', 5, 25, 10)
+A = st.sidebar.slider(r'Excitation amplitude $A$', 0.5, 3.0, 1.0)
 
 # Define the functions for f(s, t), f'(s, t), and δ(s)
 def f(s, t, beta, Tt, c, A):
@@ -152,7 +164,7 @@ line_delta, = ax.plot([], [], 'k--', label=r'$\delta(s)$')
 ax.set_xlim(0, 10)
 ax.set_ylim(-1.2*A, 1.2*A)
 ax.set_xlabel(r'Position along tether abscissa $s$')
-ax.set_ylabel(r'Function output: $f(s,t)$, $f\'(s, t)$, $\delta(s)$')
+ax.set_ylabel(r'Function output: $f(s,t)$, $f\'(s,t)$, $\delta(s)$')
 ax.axhline(0, color='black', linewidth=0.5)
 ax.legend()
 
@@ -186,9 +198,15 @@ ani.save('animation.gif', writer='pillow')
 # Display the animation in Streamlit
 st.image('animation.gif')
 
-# Show the static equations as LaTeX
-st.markdown(r'Functions $f(s)$, $f\'(s)$, $\delta(s)$:')
-st.latex(r'f(s) = A e^{-\frac{\beta s}{2c}} \sin\left( \frac{2\pi}{T_t} \left( t - \frac{s}{c} \right) \right)')
-st.latex(r'f\'(s) = -A e^{-\frac{\beta s}{2c}} \cdot \frac{1}{c} \sqrt{\left( \frac{\beta}{2} \right)^2 + \left( \frac{2\pi}{T_t} \right)^2} \sin\left( \frac{2\pi}{T_t} \left( t - \frac{s}{c} \right) + \arctan\left( \frac{4\pi}{\beta T_t} \right) \right)')
-st.latex(r'\delta(s) = e^{-\frac{\beta s}{2c}} \sin\left( \arctan\left( \frac{4\pi}{\beta T_t} \right) \right)')
+st.subheader('Analytical equations used:')
 
+# Show the static equations as LaTeX
+
+st.markdown(r'Displacement $f(s)$:')
+st.latex(r'f(s) = A e^{-\frac{\beta s}{2c}} \sin\left( \frac{2\pi}{T_t} \left( t - \frac{s}{c} \right) \right)')
+
+st.markdown(r'First spacial derivative $f\'(s)$:')
+st.latex(r'f\'(s) = -A e^{-\frac{\beta s}{2c}} \cdot \frac{1}{c} \sqrt{\left( \frac{\beta}{2} \right)^2 + \left( \frac{2\pi}{T_t} \right)^2} \sin\left( \frac{2\pi}{T_t} \left( t - \frac{s}{c} \right) + \arctan\left( \frac{4\pi}{\beta T_t} \right) \right)')
+
+st.markdown(r'Critical value $\delta(s)$:')
+st.latex(r'\delta(s) = e^{-\frac{\beta s}{2c}} \sin\left( \arctan\left( \frac{4\pi}{\beta T_t} \right) \right)')
