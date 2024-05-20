@@ -105,5 +105,5 @@ st.markdown(r'Critical lengths $L_{1,2}$ as a function of $\delta_{1,2}$:')
 
 st.latex(r""" L(\delta) = -\frac{2 \pi}{k_\beta d_\text{t} C_{D,\text{t}}} \sqrt{\frac{ A_\text{k} C_L \mu}{9 \rho_\text{a}}} \ln{\left(\delta^2 \left[ \left( k_\beta k_\psi \frac{ 9 m d_\text{t} C_{D,\text{t}} }{16 \mu A_\text{k} C_L} \right)^2 + 1  \right] \right)} \text{ (m)} """)
 
-st.markdown(r'For $\delta_1 = 0.45$, $\delta_2 = 0.15$, where $k_\beta = 0.5$, $k_\psi = 10.1$, $\vartheta_\text{op} = 45 (°)$.')
+st.markdown(r'For $\delta_1 = 0.45$, $\delta_2 = 0.15$, where $k_\beta = 0.5$, $k_\psi = 10.1$, $\vartheta_\text{op} = 45 °$.')
 
