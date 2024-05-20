@@ -2,24 +2,30 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-st.title('Composite Model for Operational Azimuth Angle $\\phi_{\\mathrm{op}}$')
+st.header('Composite Model for $\\phi_{\\mathrm{op}}$')
+st.subheader('Interactive Plot')
 
 # Sidebar for parameter inputs
-st.sidebar.header('Adjust Model Parameters')
+st.sidebar.header('System Parameters')
+
+st.markdown(r'Adjust system parameters on the left sidebar. May take a second to update.')
 
 # Parameters with Streamlit sliders
-CDt = st.sidebar.slider('CDt', 0.5, 2.0, 1.27)
-m = st.sidebar.slider('m (mass)', 100, 300, 180)
-dt = st.sidebar.slider('dt', 0.001, 0.02, 0.011)
-CL = st.sidebar.slider('CL', 0.1, 2.0, 1.0)
-Ak = st.sidebar.slider('Ak', 50, 200, 120)
-u = st.sidebar.slider('u', 0.01, 0.1, 0.062)
-d1 = st.sidebar.slider('d1', 0.1, 1.0, 0.45)
-d2 = st.sidebar.slider('d2', 0.05, 0.5, 0.15)
-Wep = st.sidebar.slider('Wep', 50, 150, 80)
-rho_a = st.sidebar.slider('rho_a', 0.5, 2.0, 1.13)
-kpsi = st.sidebar.slider('kpsi', 5, 20, 10.1)
-kB = st.sidebar.slider('kB', 0.1, 1.0, 0.5)
+CDt = st.sidebar.slider(r'Tether drag coefficient $C_{D\text{,t}}$', 0.5, 2.0, 1.27)
+m = st.sidebar.slider(r'Kite mass $m$ (kg)', 100, 300, 180)
+dt1 = st.sidebar.slider(r'Tether diameter $d_\text{t}$ (mm)', 5, 20, 11)
+CL = st.sidebar.slider(r'Kite lift coefficient $C_L$', 0.5, 1.5, 1.0)
+Ak = st.sidebar.slider(r'Kite reference area $A_\text{k}$ (m)', 50, 200, 120)
+u = st.sidebar.slider(r'Tether linear density $\mu$ (kg m$^{-1}$)', 0.01, 0.1, 0.062)
+rho_a = st.sidebar.slider(r'Air density $\rho_\text{a}$ (kg m$^{-3}$)', 0.8, 1.2, 1.13)
+
+d1 = 0.45
+d2 = 0.15
+Wep =  80
+kpsi = 10.1
+kB =0.5
+
+dt=dt1/1000
 
 # Additional constants
 theta_elevation = np.deg2rad(45)  # Assuming an elevation angle of 45 degrees
@@ -81,3 +87,23 @@ def plot_graph():
     st.pyplot(plt)
 
 plot_graph()
+
+st.subheader('Analytical equations used:')
+
+
+st.markdown(r'Operational azimuth angle in centripetal domain $\phi_\text{op,1}$, where $L < L_1$:')
+
+
+st.latex(r''' \phi_\text{op,1} = \arcsin{\left(k_{\psi}\frac{9m}{2 \rho_\text{a} A_\text{k} C_L L \cos{\vartheta_\text{op}}}\right)} \cdot \frac{180}{\pi} \text{ (°)} ''')
+
+st.markdown(r'Operational azimuth angle in asymptotic domain $\phi_\text{op,2}$, where $L > L_2$:')
+
+st.latex(r'''  \phi_\text{op,2} =  \frac{6}{\pi}\sqrt{\frac{\mu}{\rho_\text{a} A_\text{k} C_L}\left[\left(k_\beta k_\psi \frac{9 m d_\text{t} C_{D,\text{t}}}{16 \mu A_\text{k} C_L}\right)^2+1\right]}  \cdot \frac{180}{\pi} \text{ (°)} ''')
+
+
+st.markdown(r'Critical lengths $L_{1,2}$ as a function of $\delta_{1,2}$:')
+
+st.latex(r""" L(\delta) = -\frac{2 \pi}{k_\beta d_\text{t} C_{D,\text{t}}} \sqrt{\frac{ A_\text{k} C_L \mu}{9 \rho_\text{a}}} \ln{\left(\delta^2 \left[ \left( k_\beta k_\psi \frac{ 9 m d_\text{t} C_{D,\text{t}} }{16 \mu A_\text{k} C_L} \right)^2 + 1  \right] \right)} \text{ (m)} """)
+
+st.markdown(r'For $\delta_1 = 0.45$, $\delta_2 = 0.15$, $k_\beta = 0.5$, $k_\psi = 10.1$.')
+
