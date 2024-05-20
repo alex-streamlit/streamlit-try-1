@@ -1,5 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
+import streamlit.components.v1 as components
 import numpy as np
 
 st.header('Composite Model for $\\phi_{\\mathrm{op}}$')
@@ -114,7 +115,5 @@ st.title("Desmos Graph Embed in Streamlit")
 # Desmos graph iframe URL (replace with your own)
 desmos_url = "https://www.desmos.com/calculator/1qwmfqhaqu"
 
-# Embed the iframe using Streamlit's iframe component
-st.components.v1.iframe(src=desmos_url, width=700, height=500)
-
-
+# Embed the iframe using Streamlit's HTML component
+components.html(f'<iframe src="{desmos_url}" width="700" height="500"></iframe>', width=700, height=500)
