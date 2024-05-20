@@ -1,24 +1,25 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
-import streamlit as st
 
-st.title('Hello World App')
-st.write('Hello, world!')
+st.title('Composite Model for Operational Azimuth Angle $\\phi_{\\mathrm{op}}$')
 
-# Parameters
-CDt = 1.27
-m = 180
-dt = 0.011
-CL = 1
-Ak = 120
-u = 0.062
-d1 = 0.45
-d2 = 0.15
-Wep = 80
-rho_a = 1.13
-kpsi = 10.1
-kB = 0.5
+# Sidebar for parameter inputs
+st.sidebar.header('Adjust Model Parameters')
+
+# Parameters with Streamlit sliders
+CDt = st.sidebar.slider('CDt', 0.5, 2.0, 1.27)
+m = st.sidebar.slider('m (mass)', 100, 300, 180)
+dt = st.sidebar.slider('dt', 0.001, 0.02, 0.011)
+CL = st.sidebar.slider('CL', 0.1, 2.0, 1.0)
+Ak = st.sidebar.slider('Ak', 50, 200, 120)
+u = st.sidebar.slider('u', 0.01, 0.1, 0.062)
+d1 = st.sidebar.slider('d1', 0.1, 1.0, 0.45)
+d2 = st.sidebar.slider('d2', 0.05, 0.5, 0.15)
+Wep = st.sidebar.slider('Wep', 50, 150, 80)
+rho_a = st.sidebar.slider('rho_a', 0.5, 2.0, 1.13)
+kpsi = st.sidebar.slider('kpsi', 5, 20, 10.1)
+kB = st.sidebar.slider('kB', 0.1, 1.0, 0.5)
 
 # Additional constants
 theta_elevation = np.deg2rad(45)  # Assuming an elevation angle of 45 degrees
@@ -51,9 +52,6 @@ phi_trans = ((phi_op2_val - phi_op1(L1_val, L1_val)) / (L2_val - L1_val)) * (x_t
 
 # Create arrays for the asymptotic domain
 x_asymptotic = np.linspace(L2_val, 6000, 100)
-
-# Streamlit App
-st.title('Composite Model for Operational Azimuth Angle $\\phi_{\\mathrm{op}}$')
 
 # Plotting function
 def plot_graph():
