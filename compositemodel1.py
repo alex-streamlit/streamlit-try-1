@@ -16,14 +16,14 @@ m = st.sidebar.slider(r'Kite mass $m$ (kg)', 100, 300, 180)
 dt1 = st.sidebar.slider(r'Tether diameter $d_\text{t}$ (mm)', 5, 20, 11)
 CL = st.sidebar.slider(r'Kite lift coefficient $C_L$', 0.5, 1.5, 1.0)
 Ak = st.sidebar.slider(r'Kite reference area $A_\text{k}$ (m)', 50, 200, 120)
-u = st.sidebar.slider(r'Tether linear density $\mu$ (kg m$^{-1}$)', 0.04, 0.1, 0.062)
+u = st.sidebar.slider(r'Tether linear density $\mu$ (kg m$^{-1}$)', 0.04, 0.2, 0.062)
 rho_a = st.sidebar.slider(r'Air density $\rho_\text{a}$ (kg m$^{-3}$)', 0.8, 1.2, 1.13)
 
 d1 = 0.45
 d2 = 0.15
 Wep =  80
 kpsi = 10.1
-kB =0.5
+kB = 0.5
 
 dt=dt1/1000
 
@@ -70,8 +70,8 @@ def plot_graph():
 
     plt.axvline(x=L1_val, color='black', linestyle=(0, (1, 1)), alpha=0.7)
     plt.axvline(x=L2_val, color='black', linestyle=(0, (1, 1)), alpha=0.7)
-    plt.text(L1_val + 10, 12, f'$L_1 = {L1_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
-    plt.text(L2_val + 10, 12, f'$L_2 = {L2_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
+    plt.text(L1_val + 30, 12, f'$L_1 = {L1_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
+    plt.text(L2_val + 30, 12, f'$L_2 = {L2_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
 
     plt.xlabel('Tether length L (m)', fontsize=14)
     plt.ylabel('Azimuth angle $\\phi$ (°)', fontsize=14)
