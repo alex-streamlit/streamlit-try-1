@@ -118,3 +118,6 @@ desmos_url = "https://www.desmos.com/calculator/fp0bfqzdlq"
 # Embed the iframe using Streamlit's HTML component
 components.html(f'<iframe src="{desmos_url}" width="900" height="500"></iframe>', width=900, height=500)
 
+fig_html = mpld3.fig_to_html(two_subplot_fig)
+components.html(fig_html, height=600)
+
