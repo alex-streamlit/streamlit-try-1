@@ -16,7 +16,7 @@ m = st.sidebar.slider(r'Kite mass $m$ (kg)', 100, 300, 180)
 dt1 = st.sidebar.slider(r'Tether diameter $d_\text{t}$ (mm)', 5, 20, 11)
 CL = st.sidebar.slider(r'Kite lift coefficient $C_L$', 0.5, 1.5, 1.0)
 Ak = st.sidebar.slider(r'Kite reference area $A_\text{k}$ (m)', 50, 200, 120)
-u = st.sidebar.slider(r'Tether linear density $\mu$ (kg m$^{-1}$)', 0.01, 0.1, 0.062)
+u = st.sidebar.slider(r'Tether linear density $\mu$ (kg m$^{-1}$)', 0.04, 0.1, 0.062)
 rho_a = st.sidebar.slider(r'Air density $\rho_\text{a}$ (kg m$^{-3}$)', 0.8, 1.2, 1.13)
 
 d1 = 0.45
@@ -105,5 +105,6 @@ st.markdown(r'Critical lengths $L_{1,2}$ as a function of $\delta_{1,2}$:')
 
 st.latex(r""" L(\delta) = -\frac{2 \pi}{k_\beta d_\text{t} C_{D,\text{t}}} \sqrt{\frac{ A_\text{k} C_L \mu}{9 \rho_\text{a}}} \ln{\left(\delta^2 \left[ \left( k_\beta k_\psi \frac{ 9 m d_\text{t} C_{D,\text{t}} }{16 \mu A_\text{k} C_L} \right)^2 + 1  \right] \right)} \text{ (m)} """)
 
-st.markdown(r'For $\delta_1 = 0.45$, $\delta_2 = 0.15$, where $k_\beta = 0.5$, $k_\psi = 10.1$, $\vartheta_\text{op} = 45 °$.')
+st.markdown(r'For $\delta_1 = 0.45$, $\delta_2 = 0.15$.')
+st.markdown(r'Where $k_\beta = 0.5$, $k_\psi = 10.1$, and $\vartheta_\text{op} = 45 °$.')
 
