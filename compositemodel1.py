@@ -113,8 +113,8 @@ st.markdown(r'Where $k_\beta = 0.5$, $k_\psi = 10.1$, and $\vartheta_\text{op} =
 st.title("Desmos Graph Embed in Streamlit")
 
 # Desmos graph iframe URL (replace with your own)
-desmos_url = "https://www.desmos.com/calculator/iv2e35gckm"
+desmos_url = "https://www.desmos.com/calculator/fp0bfqzdlq"
 
 # Embed the iframe using Streamlit's HTML component
-components.html(f'<iframe src="{desmos_url}" width="700" height="500"></iframe>', width=700, height=500)
+components.html(f'<iframe src="{desmos_url}" width="900" height="500"></iframe>', width=900, height=500)
 
