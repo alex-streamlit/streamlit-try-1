@@ -7,6 +7,7 @@ from PIL import Image
 from pdf2image import convert_from_path
 import os
 
+st.set_page_config(page_title="Contact Page 🎉", page_icon="🎉")
 st.markdown("# Contact Page 🎉")
 st.write("This is the contact page.")
 
