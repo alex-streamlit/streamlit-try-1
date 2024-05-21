@@ -5,18 +5,17 @@ import numpy as np
 import base64
 import os
 from PIL import Image
-import pdfplumber
+from pdf2image import convert_from_path
 
 def displayPDF(file):
-    with pdfplumber.open(file) as pdf:
-        for i, page in enumerate(pdf.pages):
-            # Convert PDF page to image
-            image = page.to_image()
-            # Save the image in a temporary file
-            image_path = f"temp_page_{i}.png"
-            image.save(image_path)
-            # Display the image
-            st.image(image_path)
+    # Convert PDF to a list of image objects
+    images = convert_from_path(file, dpi=300)  # Increase dpi for better quality
+    for i, image in enumerate(images):
+        # Save the image in a temporary file
+        image_path = f"temp_page_{i}.png"
+        image.save(image_path, 'PNG')
+        # Display the image
+        st.image(image_path)
 
 # Create tabs
 tab1, tab2, tab3 = st.tabs(["Home", "About", "Contact"])
@@ -155,7 +154,6 @@ with tab2:
 
     components.html(f'<iframe src="https://www.desmos.com/calculator/worwfdu6lu?embed" width="680" height="400" style="border: 1px solid #ccc" frameborder=0></iframe>', width=680, height=500)
 
-# Content for Contact Tab
 with tab3:
     st.title("Contact Page")
     st.write("This is the contact page.")
