@@ -65,7 +65,7 @@ x_asymptotic = np.linspace(L2_val, 6000, 100)
 
 # Plotting function
 def plot_graph():
-    alfred = plt.figure(figsize=(14, 8))
+    plt.figure(figsize=(14, 8))
 
     plt.plot(x_values, phi_op1_values, color='red', linestyle='-', linewidth=2, label='Centripetal domain $\\phi_{\\mathrm{op,1}}$')
     plt.plot(x_asymptotic, [phi_op2_val] * len(x_asymptotic), color='blue', linestyle='-', linewidth=2, label='Asymptotic domain $\\phi_{\\mathrm{op,2}}$')
@@ -88,9 +88,15 @@ def plot_graph():
     # Adjust the legend
     plt.legend(loc='upper right', fontsize=12)
 
-    st.pyplot(plt)
+      return fig
 
-plot_graph()
+fig = plot_graph()
+
+# Convert the plot to HTML using mpld3
+html_str = mpld3.fig_to_html(fig)
+
+# Embed the HTML in Streamlit
+st.components.v1.html(html_str, width=700, height=500)
 
 st.subheader('Analytical equations used:')
 
