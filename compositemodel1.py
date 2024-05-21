@@ -7,5 +7,6 @@ from PIL import Image
 from pdf2image import convert_from_path
 import os
 
+st.set_page_config(page_title="Main Page 🎈", page_icon="🎈")
 st.markdown("# Main Page 🎈")
 st.write("Welcome to the main page!")
