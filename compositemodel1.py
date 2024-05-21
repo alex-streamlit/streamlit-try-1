@@ -88,7 +88,7 @@ def plot_graph():
     # Adjust the legend
     plt.legend(loc='upper right', fontsize=12)
 
-      return fig
+    return fig
 
 fig = plot_graph()
 
@@ -140,14 +140,3 @@ st.latex(r'''   y'(s,t) = - A e^{-\frac{\beta s}{2 c}} \left( \frac{\beta}{2c} \
 
 
 components.html(f'<iframe src="https://www.desmos.com/calculator/2qtrimorab?embed" width="700" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>', width=700, height=500)
-
-
-fig, ax = plt.subplots()
-ax.plot([0, 1, 2], [10, 20, 25])
-ax.set_title('Sample Plot')
-
-# Convert the plot to HTML using mpld3
-html_str = mpld3.fig_to_html(alfred)
-
-# Embed the HTML in Streamlit
-st.components.v1.html(html_str, width=700, height=500)
