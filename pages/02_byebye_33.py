@@ -17,12 +17,9 @@ st.write("This is the about page.")
 tab1, tab2, tab3 = st.tabs(["Home", "About", "Contact"])
 
 # Content for Home Tab
-with tab1:
-    st.title("Home Page")
-    st.write("Welcome to the home page!")
 
 # Content for About Tab
-with tab2:
+with tab1:
 
   st.write("This is the about page22!.")
 
@@ -146,4 +143,8 @@ with tab2:
   st.latex(r'\delta(s) = e^{-\frac{\beta s}{2c}} \sin\left( \arctan\left( \frac{4\pi}{\beta T_t} \right) \right)')
   
   components.html(f'<iframe src="https://www.desmos.com/calculator/worwfdu6lu?embed" width="680" height="400" style="border: 1px solid #ccc" frameborder=0></iframe>', width=680, height=500)
-  
+
+
+with tab3:
+    st.title("Home Page")
+    st.write("Welcome to the home page!")
