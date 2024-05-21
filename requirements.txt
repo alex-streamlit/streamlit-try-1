@@ -2,4 +2,3 @@ streamlit
 matplotlib
 numpy
 mpld3
-base64
