@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
 import numpy as np
 import base64
+import os
 
 # Create tabs
 tab1, tab2, tab3 = st.tabs(["Home", "About", "Contact"])
@@ -143,17 +144,20 @@ with tab2:
 
 # Content for Contact Tab
 with tab3:
+   if tab3 == "Contact":
     st.title("Contact Page")
     st.write("This is the contact page.")
     
-    def show_pdf(file_path):
-        try:
-            with open(file_path, "rb") as f:
-                base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-            pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-            st.markdown(pdf_display, unsafe_allow_html=True)
-        except Exception as e:
-            st.error(f"Error loading PDF: {e}")
+    def displayPDF(file):
+        # Opening file from file path
+        with open(file, "rb") as f:
+            base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+
+        # Embedding PDF in HTML
+        pdf_display = F'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+
+        # Displaying File
+        st.markdown(pdf_display, unsafe_allow_html=True)
 
     # Title of the app
     st.title("PDF Viewer")
@@ -161,5 +165,8 @@ with tab3:
     # Path to the PDF file
     pdf_path = "Thesis_Interim_Report (2).pdf"
     
-    # Display the PDF
-    show_pdf(pdf_path)
+    # Check if the file exists
+    if os.path.exists(pdf_path):
+        displayPDF(pdf_path)
+    else:
+        st.error(f"File {pdf_path} does not exist.")
