@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
 import numpy as np
+import base64
 
 # Create tabs
 tab1, tab2, tab3 = st.tabs(["Home", "About", "Contact"])
