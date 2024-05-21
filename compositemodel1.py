@@ -137,7 +137,4 @@ components.html(f'<iframe src="https://www.desmos.com/calculator/2qtrimorab?embe
 html_str = mpld3.fig_to_html(plt)
 
 # Embed the HTML in Streamlit
-st.components.v1.html(plt, width=700, height=500)
-
-fig_html = mpld3.fig_to_html(plt)
-components.html(fig_html, height=600)
+st.components.v1.html(html_str, width=700, height=500)
