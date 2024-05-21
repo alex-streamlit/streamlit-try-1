@@ -3,4 +3,3 @@ matplotlib
 numpy
 mpld3
 pdf2image
-poppler
