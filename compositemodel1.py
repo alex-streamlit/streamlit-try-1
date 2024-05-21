@@ -29,8 +29,8 @@ with tab2:
     m = st.sidebar.slider(r'Kite mass $m$ (kg)', 100, 300, 180)
     dt1 = st.sidebar.slider(r'Tether diameter $d_\text{t}$ (mm)', 5, 20, 11)
     CL = st.sidebar.slider(r'Kite lift coefficient $C_L$', 0.5, 1.5, 1.0)
-    Ak = st.sidebar.slider(r'Kite reference area $A_\text{k}$ (m)', 50, 200, 120)
-    u = st.sidebar.slider(r'Tether linear density $\mu$ (kg m$^{-1}$)', 0.04, 0.2, 0.062)
+    Ak = st.sidebar.slider(r'Kite reference area $A_\text{k}$ (m$^{2}$)', 50, 200, 120)
+    u1 = st.sidebar.slider(r'Tether linear density $\mu$ (g m$^{-1}$)', 30, 200, 62)
     rho_a = st.sidebar.slider(r'Air density $\rho_\text{a}$ (kg m$^{-3}$)', 0.8, 1.2, 1.13)
 
     d1 = 0.45
@@ -40,6 +40,7 @@ with tab2:
     kB = 0.5
 
     dt=dt1/1000
+    u=u1/1000
 
     # Additional constants
     theta_elevation = np.deg2rad(45)  # Assuming an elevation angle of 45 degrees
