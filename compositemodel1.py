@@ -136,7 +136,12 @@ st.latex(r'''   y'(s,t) = - A e^{-\frac{\beta s}{2 c}} \left( \frac{\beta}{2c} \
 components.html(f'<iframe src="https://www.desmos.com/calculator/2qtrimorab?embed" width="700" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>', width=700, height=500)
 
 
-html_str = mpld3.fig_to_html(plt)
+fig, ax = plt.subplots()
+ax.plot([0, 1, 2], [10, 20, 25])
+ax.set_title('Sample Plot')
+
+# Convert the plot to HTML using mpld3
+html_str = mpld3.fig_to_html(fig)
 
 # Embed the HTML in Streamlit
 st.components.v1.html(html_str, width=700, height=500)
