@@ -7,7 +7,7 @@ from PIL import Image
 from pdf2image import convert_from_path
 import os
 
-
+st.set_page_config(page_title="About Page ❄️", page_icon="❄️")
 st.markdown("# About Page ❄️")
 st.sidebar.markdown("# About Page ❄️")
 
