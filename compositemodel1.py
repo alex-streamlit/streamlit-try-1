@@ -144,7 +144,6 @@ with tab2:
 
 # Content for Contact Tab
 with tab3:
-   if tab3 == "Contact":
     st.title("Contact Page")
     st.write("This is the contact page.")
     
