@@ -2,6 +2,7 @@ import streamlit as st
 from pdf2image import convert_from_path
 import os
 from PIL import Image
+import numpy as np
 
 def displayPDF(file):
     # Convert PDF to a list of image objects
