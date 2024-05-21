@@ -171,3 +171,4 @@ with tab3:
         st.error(f"File {pdf_path} does not exist.")
 
     image1 = Image.open("GlobalCoordinates.png")
+    st.image(image1, caption='Diagram of global spherical coordinate system $(r_G,\\vartheta_G,\\phi_G)$ used by Argatov.', use_column_width=True)
