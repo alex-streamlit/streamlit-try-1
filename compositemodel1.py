@@ -169,3 +169,5 @@ with tab3:
         displayPDF(pdf_path)
     else:
         st.error(f"File {pdf_path} does not exist.")
+
+    image1 = Image.open("GlobalCoordinates.png")
