@@ -4,6 +4,8 @@ import streamlit.components.v1 as components
 import numpy as np
 import mpld3
 
+from mpld3 import plugins
+
 st.header('Composite Model for $\\phi_{\\mathrm{op}}$')
 st.subheader('Interactive Plot')
 
