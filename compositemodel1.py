@@ -6,6 +6,17 @@ import base64
 import os
 from PIL import Image
 
+def displayPDF(file):
+    # Opening file from file path
+    with open(file, "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+
+    # Embedding PDF in HTML using iframe
+    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="500"></iframe>'
+
+    # Displaying File
+    st.markdown(pdf_display, unsafe_allow_html=True)
+
 # Create tabs
 tab1, tab2, tab3 = st.tabs(["Home", "About", "Contact"])
 
@@ -145,22 +156,11 @@ with tab2:
 
 # Content for Contact Tab
 with tab3:
-    def displayPDF(file):
-        # Opening file from file path
-        with open(file, "rb") as f:
-            base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-    
-        # Embedding PDF in HTML using iframe
-        pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-    
-        # Displaying File
-        st.markdown(pdf_display, unsafe_allow_html=True)
-
     st.title("Contact Page")
     st.write("This is the contact page.")
     
-    # Title of the app
-    st.title("PDF Viewer")
+    # Title of the PDF viewer
+    st.subheader("PDF Viewer")
     
     # Path to the PDF file
     pdf_path = "Thesis_Interim_Report (2).pdf"
@@ -171,5 +171,6 @@ with tab3:
     else:
         st.error(f"File {pdf_path} does not exist.")
 
+    # Displaying images
     image1 = Image.open("GlobalCoordinates.png")
     st.image(image1, caption='Diagram of global spherical coordinate system $(r_G,\\vartheta_G,\\phi_G)$ used by Argatov.', use_column_width=True)
