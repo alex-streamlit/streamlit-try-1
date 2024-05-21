@@ -1,3 +1,15 @@
+import streamlit as st
+import matplotlib.pyplot as plt
+import streamlit.components.v1 as components
+import numpy as np
+import base64
+from PIL import Image
+from pdf2image import convert_from_path
+import os
+
+st.markdown("# Contact Page 🎉")
+st.write("This is the contact page.")
+
 def displayPDF(file):
   # Convert PDF to a list of image objects
   images = convert_from_path(file, dpi=300)  # Increase dpi for better quality
