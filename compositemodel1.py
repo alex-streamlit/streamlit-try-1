@@ -5,6 +5,7 @@ import numpy as np
 import base64
 import os
 from PIL import Image
+from streamlit_pdf_viewer import pdf_viewer
 
 def displayPDF(file):
     # Opening file from file path
