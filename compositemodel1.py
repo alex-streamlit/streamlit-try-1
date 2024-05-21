@@ -3,6 +3,18 @@ import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
 import numpy as np
 
+def page_home():
+    st.title("Home Page")
+    st.write("Welcome to the home page!")
+
+def page_about():
+    st.title("About Page")
+    st.write("This is the about page.")
+
+def page_contact():
+    st.title("Contact Page")
+    st.write("This is the contact page.")
+    
 st.header('Composite Model for $\\phi_{\\mathrm{op}}$')
 st.subheader('Interactive Plot')
 
@@ -119,3 +131,16 @@ components.html(f'<iframe src="https://www.desmos.com/calculator/worwfdu6lu?embe
 
 
 
+
+
+# Sidebar for navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.selectbox("Go to", ["Home", "About", "Contact"])
+
+# Render the selected page
+if page == "Home":
+    page_home()
+elif page == "About":
+    page_about()
+elif page == "Contact":
+    page_contact()
