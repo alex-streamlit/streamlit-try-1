@@ -64,34 +64,35 @@ phi_trans = ((phi_op2_val - phi_op1(L1_val, L1_val)) / (L2_val - L1_val)) * (x_t
 x_asymptotic = np.linspace(L2_val, 6000, 100)
 
 # Plotting function
-def plot_graph():
-    fig, ax = plt.subplots(figsize=(14, 8))
+def plot_graph():a
+    fig = plt.figure(figsize=(14, 8))
 
-    ax.plot(x_values, phi_op1_values, color='red', linestyle='-', linewidth=2, label='Centripetal domain $\\phi_{\\mathrm{op,1}}$')
-    ax.plot(x_asymptotic, [phi_op2_val] * len(x_asymptotic), color='blue', linestyle='-', linewidth=2, label='Asymptotic domain $\\phi_{\\mathrm{op,2}}$')
+    plt.plot(x_values, phi_op1_values, color='red', linestyle='-', linewidth=2, label='Centripetal domain $\\phi_{\\mathrm{op,1}}$')
+    plt.plot(x_asymptotic, [phi_op2_val] * len(x_asymptotic), color='blue', linestyle='-', linewidth=2, label='Asymptotic domain $\\phi_{\\mathrm{op,2}}$')
 
-    ax.plot(x_trans, phi_trans, color='black', linestyle='--', linewidth=2, label='Transitional domain')
+    plt.plot(x_trans, phi_trans, color='black', linestyle='--', linewidth=2, label='Transitional domain')
 
-    ax.axvline(x=L1_val, color='black', linestyle=(0, (1, 1)), alpha=0.7)
-    ax.axvline(x=L2_val, color='black', linestyle=(0, (1, 1)), alpha=0.7)
-    ax.text(L1_val + 30, 12, f'$L_1 = {L1_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
-    ax.text(L2_val + 30, 12, f'$L_2 = {L2_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
+    plt.axvline(x=L1_val, color='black', linestyle=(0, (1, 1)), alpha=0.7)
+    plt.axvline(x=L2_val, color='black', linestyle=(0, (1, 1)), alpha=0.7)
+    plt.text(L1_val + 30, 12, f'$L_1 = {L1_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
+    plt.text(L2_val + 30, 12, f'$L_2 = {L2_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
 
-    ax.set_xlabel('Tether length L (m)', fontsize=14)
-    ax.set_ylabel('Azimuth angle $\\phi$ (°)', fontsize=14)
-    ax.set_title('Composite Model for Operational Azimuth Angle $\\phi_{\\mathrm{op}}$', fontsize=16)
-    ax.set_xlim([0, 5000])
-    ax.set_ylim([0, 14])
-    ax.grid(axis='y', which='major', linestyle=':', linewidth=0.5)
-    ax.yaxis.set_major_locator(plt.MultipleLocator(1))
+    plt.xlabel('Tether length L (m)', fontsize=14)
+    plt.ylabel('Azimuth angle $\\phi$ (°)', fontsize=14)
+    plt.title('Composite Model for Operational Azimuth Angle $\\phi_{\\mathrm{op}}$', fontsize=16)
+    plt.xlim([0, 5000])
+    plt.ylim([0, 14])
+    plt.grid(axis='y', which='major', linestyle=':', linewidth=0.5)
+    plt.gca().yaxis.set_major_locator(plt.MultipleLocator(1))
 
     # Adjust the legend
-    ax.legend(loc='upper right', fontsize=12)
-    
+    plt.legend(loc='upper right', fontsize=12)
+
     return fig
 
-# Call the plotting function
 fig = plot_graph()
+
+
 
 # Convert the plot to HTML using mpld3
 html_str = mpld3.fig_to_html(fig)
