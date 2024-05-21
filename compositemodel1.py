@@ -5,17 +5,18 @@ import numpy as np
 import base64
 import os
 from PIL import Image
+import pdfplumber
 
 def displayPDF(file):
-    # Opening file from file path
-    with open(file, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-
-    # Embedding PDF in HTML using iframe
-    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="500" type="application/pdf"></iframe>'
-
-    # Displaying File
-    st.markdown(pdf_display, unsafe_allow_html=True)
+    with pdfplumber.open(file) as pdf:
+        for i, page in enumerate(pdf.pages):
+            # Convert PDF page to image
+            image = page.to_image()
+            # Save the image in a temporary file
+            image_path = f"temp_page_{i}.png"
+            image.save(image_path)
+            # Display the image
+            st.image(image_path)
 
 # Create tabs
 tab1, tab2, tab3 = st.tabs(["Home", "About", "Contact"])
