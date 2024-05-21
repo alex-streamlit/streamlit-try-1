@@ -88,9 +88,9 @@ def plot_graph():
     # Adjust the legend
     plt.legend(loc='upper right', fontsize=12)
 
-    return fig
-
 fig = plot_graph()
+
+return fig
 
 # Convert the plot to HTML using mpld3
 html_str = mpld3.fig_to_html(fig)
