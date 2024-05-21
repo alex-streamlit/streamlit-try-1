@@ -64,8 +64,8 @@ phi_trans = ((phi_op2_val - phi_op1(L1_val, L1_val)) / (L2_val - L1_val)) * (x_t
 x_asymptotic = np.linspace(L2_val, 6000, 100)
 
 # Plotting function
-def plot_graph():a
-    fig = plt.figure(figsize=(14, 8))
+def plot_graph():
+    plt.figure(figsize=(14, 8))
 
     plt.plot(x_values, phi_op1_values, color='red', linestyle='-', linewidth=2, label='Centripetal domain $\\phi_{\\mathrm{op,1}}$')
     plt.plot(x_asymptotic, [phi_op2_val] * len(x_asymptotic), color='blue', linestyle='-', linewidth=2, label='Asymptotic domain $\\phi_{\\mathrm{op,2}}$')
@@ -88,11 +88,9 @@ def plot_graph():a
     # Adjust the legend
     plt.legend(loc='upper right', fontsize=12)
 
-return fig
+    return fig
 
 fig = plot_graph()
-
-
 
 # Convert the plot to HTML using mpld3
 html_str = mpld3.fig_to_html(fig)
@@ -142,3 +140,14 @@ st.latex(r'''   y'(s,t) = - A e^{-\frac{\beta s}{2 c}} \left( \frac{\beta}{2c} \
 
 
 components.html(f'<iframe src="https://www.desmos.com/calculator/2qtrimorab?embed" width="700" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>', width=700, height=500)
+
+
+fig, ax = plt.subplots()
+ax.plot([0, 1, 2], [10, 20, 25])
+ax.set_title('Sample Plot')
+
+# Convert the plot to HTML using mpld3
+html_str = mpld3.fig_to_html(alfred)
+
+# Embed the HTML in Streamlit
+st.components.v1.html(html_str, width=700, height=500)
