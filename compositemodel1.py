@@ -4,7 +4,6 @@ import streamlit.components.v1 as components
 import numpy as np
 import base64
 from PIL import Image
-import pdfplumber
 from pdf2image import convert_from_path
 import os
 
