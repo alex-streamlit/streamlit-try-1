@@ -88,7 +88,7 @@ def plot_graph():a
     # Adjust the legend
     plt.legend(loc='upper right', fontsize=12)
 
-    return fig
+return fig
 
 fig = plot_graph()
 
