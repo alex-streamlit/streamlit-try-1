@@ -5,7 +5,6 @@ import numpy as np
 import base64
 import os
 from PIL import Image
-from streamlit_pdf_viewer import pdf_viewer
 
 def displayPDF(file):
     # Opening file from file path
@@ -13,7 +12,7 @@ def displayPDF(file):
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
     # Embedding PDF in HTML using iframe
-    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="500"></iframe>'
+    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="500" type="application/pdf"></iframe>'
 
     # Displaying File
     st.markdown(pdf_display, unsafe_allow_html=True)
