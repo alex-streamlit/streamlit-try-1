@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
 import numpy as np
+import mpld3
 
 st.header('Composite Model for $\\phi_{\\mathrm{op}}$')
 st.subheader('Interactive Plot')
@@ -112,12 +113,25 @@ st.markdown(r'Where $k_\beta = 0.5$, $k_\psi = 10.1$, and $\vartheta_\text{op} =
 
 st.title("Desmos Graph Embed in Streamlit")
 
-# Desmos graph iframe URL (replace with your own)
-desmos_url = "https://www.desmos.com/calculator/fp0bfqzdlq"
 
 # Embed the iframe using Streamlit's HTML component
-components.html(f'<iframe src="{desmos_url}" width="900" height="500"></iframe>', width=900, height=500)
+components.html(f'<iframe src="https://www.desmos.com/calculator/h7aq5hwx0u" width="700" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>', width=700, height=500)
 
-fig_html = mpld3.fig_to_html(two_subplot_fig)
+st.subheader('Analytical equations used:')
+
+
+st.markdown(r'Critical value $\delta(s)$:')
+
+
+st.latex(r''' \delta(s)=e^{-\frac{\beta s}{2c}} \sin{\left(\arctan{\left(\frac{4\pi}{\beta T_t}\right)}\right)}  ''')
+
+st.latex(r'''  y(s,t) = A e^{-\frac{\beta s}{2 c}} \sin{\left(\frac{2 \pi}{T_t}(t-\nicefrac{s}{c})\right)} ''')
+
+st.latex(r'''   y'(s,t) = - A e^{-\frac{\beta s}{2 c}} \left( \frac{\beta}{2c} \sin{\left(\frac{2 \pi}{T_t}(t-\nicefrac{s}{c})\right)}+\frac{2 \pi}{T_t c}\cos{\left(\frac{2 \pi}{T_t}(t-\nicefrac{s}{c})\right)}\right) ''')
+
+
+
+components.html(f'<iframe src="https://www.desmos.com/calculator/2qtrimorab?embed" width="700" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>', width=700, height=500)
+
+fig_html = mpld3.fig_to_html(plt)
 components.html(fig_html, height=600)
-
