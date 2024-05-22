@@ -15,7 +15,7 @@ st.sidebar.markdown("# Linear Damping Wave Equation 🌊")
 st.title("Desmos Graph Embed in Streamlit")
 
 # Embed the iframe using Streamlit's HTML component
-components.html(f'<iframe src="https://www.desmos.com/calculator/h7aq5hwx0u" width="680" height="500"></iframe>', width=680, height=500)
+components.html(f'<iframe src="https://www.desmos.com/calculator/h7aq5hwx0u" width="650" height="400"></iframe>', width=650, height=400)
 
 st.subheader('Analytical equations used:')
 
