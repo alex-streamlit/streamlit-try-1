@@ -8,9 +8,6 @@ from pdf2image import convert_from_path
 import os
 
 st.set_page_config(page_title="Linear Damping Wave Equation 🌊", page_icon="❄🌊")
-st.markdown("# Linear Damping Wave Equation 🌊")
-st.sidebar.markdown("# Linear Damping Wave Equation 🌊")
-
 
 st.title("Linear Damping Wave Equation 🌊")
 
