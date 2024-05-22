@@ -10,7 +10,8 @@ import os
 st.set_page_config(page_title="Composite Model for Operational Azimuth Angle 🎶", page_icon="🎶")
 
 st.title("Composite Model for Operational Azimuth Angle 🎶")
-st.write("This is the about page.")
+
+st.markdown(r'This page displays an interactive plot of the composite model described in Section DO. Analytical equations are provided below.')
 
 st.sidebar.header('System Parameters')
 
@@ -59,21 +60,21 @@ phi_op2_val = phi_op2()
 x_values = np.linspace(L1_val / 2, L1_val, 100)
 phi_op1_values = phi_op1(x_values, L1_val)
 
-# Create arrays for the transitional domain
+# Create arrays for the transitional regime
 x_trans = np.linspace(L1_val, L2_val, 100)
 phi_trans = ((phi_op2_val - phi_op1(L1_val, L1_val)) / (L2_val - L1_val)) * (x_trans - L1_val) + phi_op1(L1_val, L1_val)
 
-# Create arrays for the asymptotic domain
+# Create arrays for the asymptotic regime
 x_asymptotic = np.linspace(L2_val, 6000, 100)
 
 # Plotting function
 def plot_graph():
   plt.figure(figsize=(14, 8))
   
-  plt.plot(x_values, phi_op1_values, color='red', linestyle='-', linewidth=2, label='Centripetal domain $\\phi_{\\mathrm{op,1}}$')
-  plt.plot(x_asymptotic, [phi_op2_val] * len(x_asymptotic), color='blue', linestyle='-', linewidth=2, label='Asymptotic domain $\\phi_{\\mathrm{op,2}}$')
+  plt.plot(x_values, phi_op1_values, color='red', linestyle='-', linewidth=2, label='Centripetal regime $\\phi_{\\mathrm{op,1}}$')
+  plt.plot(x_asymptotic, [phi_op2_val] * len(x_asymptotic), color='blue', linestyle='-', linewidth=2, label='Asymptotic regime $\\phi_{\\mathrm{op,2}}$')
   
-  plt.plot(x_trans, phi_trans, color='black', linestyle='--', linewidth=2, label='Transitional domain')
+  plt.plot(x_trans, phi_trans, color='black', linestyle='--', linewidth=2, label='Transitional regime')
   
   plt.axvline(x=L1_val, color='black', linestyle=(0, (1, 1)), alpha=0.7)
   plt.axvline(x=L2_val, color='black', linestyle=(0, (1, 1)), alpha=0.7)
@@ -97,11 +98,11 @@ plot_graph()
 
 st.subheader('Analytical equations used:')
 
-st.markdown(r'Operational azimuth angle in centripetal domain $\phi_\text{op,1}$, where $L < L_1$:')
+st.markdown(r'Operational azimuth angle in centripetal regime $\phi_\text{op,1}$, where $L < L_1$:')
 
 st.latex(r''' \phi_\text{op,1} = \arcsin{\left(k_{\psi}\frac{9m}{2 \rho_\text{a} A_\text{k} C_L L \cos{\vartheta_\text{op}}}\right)} \cdot \frac{180}{\pi} \text{ (°)} ''')
 
-st.markdown(r'Operational azimuth angle in asymptotic domain $\phi_\text{op,2}$, where $L > L_2$:')
+st.markdown(r'Operational azimuth angle in asymptotic regime $\phi_\text{op,2}$, where $L > L_2$:')
 
 st.latex(r'''  \phi_\text{op,2} =  \frac{6}{\pi}\sqrt{\frac{\mu}{\rho_\text{a} A_\text{k} C_L}\left[\left(k_\beta k_\psi \frac{9 m d_\text{t} C_{D,\text{t}}}{16 \mu A_\text{k} C_L}\right)^2+1\right]}  \cdot \frac{180}{\pi} \text{ (°)} ''')
 
