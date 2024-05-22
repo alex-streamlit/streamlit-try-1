@@ -93,6 +93,11 @@ def plot_graph():
   
   # Adjust the legend
   plt.legend(loc='upper right', fontsize=12)
+
+  plt.tight_layout()
+    
+    # Save the plot with high resolution
+  plt.savefig('high_quality_plot.png', dpi=300)
   
   st.pyplot(plt)
 
