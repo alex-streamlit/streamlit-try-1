@@ -8,5 +8,5 @@ from pdf2image import convert_from_path
 import os
 
 st.set_page_config(page_title="Home Page 🏠", page_icon="🏠")
-st.markdown("# Home Page 🎈")
+st.markdown("# Home Page 🏠")
 st.write("This is home page - describe")
