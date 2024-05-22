@@ -122,3 +122,5 @@ st.latex(r""" L(\delta) = -\frac{2 \pi}{k_\beta d_\text{t} C_{D,\text{t}}} \sqrt
 st.markdown(r'For $\delta_1 = 0.45$, $\delta_2 = 0.15$.')
 st.markdown(r'Where $k_\beta = 0.5$, $k_\psi = 10.1$, and $\vartheta_\text{op} = 45 °$.')
 
+tab1, tab2, tab3 = st.tabs(["Analytical Model", "Comparison with Numerical Analysis", "Resultss"])
+
