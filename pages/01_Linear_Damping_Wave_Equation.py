@@ -8,7 +8,7 @@ from pdf2image import convert_from_path
 import os
 
 
-st.set_page_config(page_title="Linear Damping Wave Equation 🌊", page_icon="🌊, "layout="wide")
+st.set_page_config(page_title="Linear Damping Wave Equation 🌊", page_icon="🌊", layout="wide")
 
 st.title("Linear Damping Wave Equation 🌊")
 
