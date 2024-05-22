@@ -13,7 +13,7 @@ st.set_page_config(page_title="Linear Damping Wave Equation 🌊", page_icon="�
 st.title("Linear Damping Wave Equation 🌊")
 
 # Embed the iframe using Streamlit's HTML component
-components.html(f'<iframe src="https://www.desmos.com/calculator/h7aq5hwx0u" width="700" height="500"></iframe>', width=700, height=500)
+components.html(f'<iframe src="https://www.desmos.com/calculator/h7aq5hwx0u" width="900" height="500"></iframe>', width=900, height=500)
 
 st.subheader('Analytical equations used:')
 
