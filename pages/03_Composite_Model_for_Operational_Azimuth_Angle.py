@@ -15,6 +15,8 @@ st.markdown(r'This page displays an interactive plot of the composite model desc
 
 st.sidebar.header('System Parameters')
 
+st.subheader('Interactive Plot')
+
 st.markdown(r'Adjust system parameters on the left sidebar. May take a second to update.')
 
 # Parameters with Streamlit sliders
