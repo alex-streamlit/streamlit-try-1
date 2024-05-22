@@ -8,9 +8,8 @@ from pdf2image import convert_from_path
 import os
 
 st.set_page_config(page_title="Composite Model for Operational Azimuth Angle 🎶", page_icon="🎶")
-st.markdown("# About Page 🎶")
 
-st.title("About Page")
+st.title("Composite Model for Operational Azimuth Angle 🎶")
 st.write("This is the about page.")
 
 st.sidebar.header('System Parameters')
