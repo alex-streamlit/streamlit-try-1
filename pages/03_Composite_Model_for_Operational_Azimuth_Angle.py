@@ -84,7 +84,7 @@ def plot_graph():
   plt.text(L2_val + 30, 12, f'$L_2 = {L2_val:.0f} \, \\mathrm{{m}}$', ha='left', va='center', fontsize=12, color='black', alpha=0.7)
   
   plt.xlabel('Tether length L (m)', fontsize=14)
-  plt.ylabel('Azimuth angle $\\phi$ (°)', fontsize=14)
+  plt.ylabel('Operational Azimuth angle $\\phi_{\\mathrm{op}}$ (°)', fontsize=14)
   plt.title('Composite Model for Operational Azimuth Angle $\\phi_{\\mathrm{op}}$', fontsize=16)
   plt.xlim([0, 5000])
   plt.ylim([0, 14])
