@@ -7,9 +7,9 @@ from PIL import Image
 from pdf2image import convert_from_path
 import os
 
-st.set_page_config(page_title=r"Composite Model for Operational Azimuth Angle $\phi_\text{op}$ 🎶", page_icon="🎶", layout = "wide")
+st.set_page_config(page_title="Composite Model for Operational Azimuth Angle 🎶", page_icon="🎶", layout = "wide")
 
-st.title("Composite Model for Operational Azimuth Angle 🎶")
+st.title(r"Composite Model for Operational Azimuth Angle $\phi_\text{op}$ 🎶")
 
 st.markdown(r'This page displays an interactive plot of the composite model described in Section DO. Analytical equations are provided below.')
 
