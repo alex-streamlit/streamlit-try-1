@@ -10,3 +10,4 @@ import os
 
 st.set_page_config(page_title="Lost link! Give me a sec", page_icon="🌊", layout="wide")
 
+st.title("Lost link! GFive me a sec")
